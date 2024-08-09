@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление метки с собственным изображением</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--
+        Укажите свой API-ключ. Тестовый ключ НЕ БУДЕТ работать на других сайтах.
+        Получить ключ можно в Кабинете разработчика: https://developer.tech.yandex.ru/keys/
+    -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<6f105200-6582-4c70-ac5a-f1e8620622ad>" type="text/javascript"></script>
+    <script>
+ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [56.838011, 60.597474],
+            zoom: 11,
+            controls: []
+        }, {
+            
+        }),
+
+        // Создаём макет содержимого.
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+        myPlacemark = new ymaps.Placemark([56.858151, 60.657834], {
+            hintContent: "",
+        // Зададим содержимое заголовка балуна.
+    balloonContentHeader: '',
+    // Зададим содержимое основной части балуна.
+    balloonContentBody: '<a href = "https://grinvich.ru/jiloy-kompleks-tepliy"><img src="https://optim.tildacdn.com/tild3163-6630-4266-b338-313438373465/-/resize/360x/-/format/webp/image_38.png"/>',
+    // Зададим содержимое нижней части балуна.
+    balloonContentFooter: '',
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            iconShadow: true,
+            iconOffset: [10, 0],
+            // Своё изображение иконки метки.
+            iconImageHref: "https://optim.tildacdn.com/tild3034-6131-4564-b637-643733316539/-/format/webp/Group_9.png",
+            // Размеры метки.
+            iconImageSize: [300, 85],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [10, 0],
+            iconHover: "default#image"
+        }),
+		myPlacemark2 = new ymaps.Placemark([56.842976, 60.674734], {
+            hintContent: '',
+            // Зададим содержимое заголовка балуна.
+    balloonContentHeader: '',
+    // Зададим содержимое основной части балуна.
+    balloonContentBody: '<a href = "https://grinvich.ru/park_kamennye_palatki"><img src="https://optim.tildacdn.com/tild3363-6365-4237-b334-383163343237/-/resize/360x/-/format/webp/image_37.png"/>',
+    // Зададим содержимое нижней части балуна.
+    balloonContentFooter: '',
+        }, 
+        
+        {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: 'https://static.tildacdn.com/tild3930-3563-4466-a337-346233646166/Group_4_4.png',
+            // Размеры метки.
+            iconImageSize: [190, 45],
+            
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [0, 0]
+        }),
+        
+        myPlacemark3 = new ymaps.Placemark([56.809586, 60.584575], {
+            hintContent: '',
+            balloonContent: '',
+            // Зададим содержимое заголовка балуна.
+    balloonContentHeader: '',
+    // Зададим содержимое основной части балуна.
+    balloonContentBody: '<a href = "https://grinvich.ru/park_kamennye_palatki"><img src="https://optim.tildacdn.com/tild3065-6265-4737-b736-653438663236/-/resize/360x/-/format/webp/image_39.png"/>',
+    // Зададим содержимое нижней части балуна.
+    balloonContentFooter: '',
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: 'https://optim.tildacdn.com/tild3637-3536-4537-a539-633039336534/-/resize/224x/-/format/webp/Group_5_3.png',
+            // Размеры метки.
+            iconImageSize: [190, 45],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [0, 0]
+        });
+      
+
+    myMap.geoObjects
+        .add(myPlacemark)
+        .add(myPlacemark2)
+        .add(myPlacemark3);
+});
+</script>
+	<style>
+        html, body, #map {
+            width: 100%; height: 100%; padding: 0; margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>
